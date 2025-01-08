@@ -1,0 +1,137 @@
+#!/bin/bash
+
+# Crear un nuevo usuario
+curl -X POST "http://localhost:8080/usuario" \
+-H "Content-Type: application/json" \
+-d '{
+    "apellido": "García",
+    "dni": 12345678,
+    "nombres": "Juan",
+    "email": "juan.garcia@example.com",
+    "foto": null,
+    "clave": "password123"
+}'
+
+# Actualizar usuario existente
+curl -X PUT "http://localhost:8080/usuario/12345678" \
+-H "Authorization: Bearer 123+123456" \
+-H "Content-Type: application/json" \
+-d '{
+    "apellido": "García",
+    "dni": 12345678,
+    "nombres": "Tomas",
+    "email": "juan.garcia@example.com",
+    "foto": null,
+    "clave": "pass123"
+}'
+
+# Login de usuario con credenciales correctas
+curl -X POST "http://localhost:8080/usuario/Autenticacion" \
+-H "Content-Type: application/json"
+-d '{
+	"dni":12345678,
+	"clave":"password123"	
+}'
+
+# Login de usuario con credenciales incorrectas
+curl -D headers.txt -X POST "http://localhost:8080/usuario/Autenticacion" \
+-H "Content-Type: application/json" \
+-d '{
+	"dni":12345678,
+	"clave":"password123"
+}'
+
+# Obtener usuario por DNI con token
+curl -X GET "http://localhost:8080/usuario/1223" \
+-H "Authorization: Bearer 123+123456"
+
+
+
+#!/bin/bash
+
+# Crear un menú con Milanesa
+curl -X POST "http://localhost:8080/menu" \
+-H "Content-Type: application/json" \
+-d '{
+    "precio": 150.50,
+    "tipo": "Almuerzo",
+    "dias": "LUNES",
+    "comidas": [
+        1
+    ]
+}'
+
+# Crear un menú vegano con Pizza romana y Tarta de Queso
+curl -X POST "http://localhost:8080/menu" \
+-H "Content-Type: application/json" \
+-d '{
+    "precio": 150.50,
+    "tipo": "Vegano",
+    "dias": "MARTES",
+    "comidas": [
+       2,3
+    ]
+}'
+
+# Actualizar un menú existente (ID: 2)
+curl -X PUT "http://localhost:8080/menu/2" \
+-H "Content-Type: application/json" \
+-d '{
+    "precio": 175.00,
+    "tipo": "No Vegano",
+    "dias": "MIERCOLES",
+    "comidas": [
+        2
+    ]
+}'
+
+# Obtener todos los menús
+curl -X GET "http://localhost:8080/menu"
+
+
+
+
+
+#!/bin/bash
+
+# Crear una comida nueva
+curl -X POST "http://localhost:8080/comida" \
+-H "Content-Type: application/json" \
+-d '{
+    "nombre":"Milanesa",
+    "precio":"100"
+}'
+
+# Actualizar una comida existente
+curl -X PUT "http://localhost:8080/comida" \
+-H "Content-Type: application/json" \
+-d '{
+    "nombre":"Milanesa",
+    "precio":"300"
+}'
+
+curl -X POST "http://localhost:8080/comida" \
+-H "Content-Type: application/json" \
+-d '{
+    "nombre":"Tarta de Queso",
+    "precio":"300"
+}'
+curl -X POST "http://localhost:8080/comida" \
+-H "Content-Type: application/json" \
+-d '{
+    "nombre":"Pizza romana",
+    "precio":"400"
+}'
+
+# Intentar actualizar una comida no existente
+curl -X PUT "http://localhost:8080/comida" \
+-H "Content-Type: application/json" \
+-d '{
+    "nombre":"Pizza Napolitana",
+    "precio":"1000"
+}'
+
+# Obtener todas las comidas
+curl -X GET "http://localhost:8080/comida"
+
+

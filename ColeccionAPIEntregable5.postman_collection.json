@@ -1,0 +1,417 @@
+{
+	"info": {
+		"_postman_id": "83b684e3-62cf-432d-8983-05883772260e",
+		"name": "PruebaBuffetPostman Copy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39823572"
+	},
+	"item": [
+		{
+			"name": "cargaNuevoUsuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"apellido\": \"Gomez\",\r\n    \"dni\": 12235,\r\n    \"nombres\": \"tomas\",\r\n    \"email\": \"tomasgomez@example.com\",\r\n    \"foto\": null,\r\n    \"clave\": \"password123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarUsuario",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 123+123456",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{   \"dni\":null,\r\n    \"apellido\": \"García\",\r\n    \"nombres\": \"Juan\",\r\n    \"email\": \"juan.garcia@example.com\",\r\n    \"foto\": null,\r\n    \"clave\": \"pass\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/12235",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"12235"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUsuarioCredencialesCorrectas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clave\": \"password123\",\r\n    \"dni\": 12235\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/usuario/Autenticacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"Autenticacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetUsuarioDniToken",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer 123+123456",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/usuario/1223",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"1223"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearMenu1ConEnsalada",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"precio\": 150.50,\r\n    \"tipo\": \"Almuerzo\",\r\n    \"dias\": \"LUNES\",\r\n    \"comidas\": [\r\n        {\r\n            \"idcomida\": 1,\r\n            \"nombre\": \"Ensalada\",\r\n            \"precio\": 50.0\r\n        },\r\n        {\r\n            \"idcomida\": 2,\r\n            \"nombre\": \"Pollo al Horno\",\r\n            \"precio\": 100.5\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearMenu2ConEnsaladaYTarta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"precio\": 150.50,\r\n    \"tipo\": \"Vegano\",\r\n    \"dias\": \"MARTES\",\r\n    \"comidas\": [\r\n        {\r\n            \"nombre\": \"Ensalada\",\r\n            \"precio\": 50.0\r\n        },\r\n        {\r\n            \"nombre\": \"Tarta de queso\",\r\n            \"precio\": 100.5\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarMenu2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"precio\": 175.00,\r\n    \"tipo\": \"No Vegano\",\r\n    \"dias\": \"MIERCOLES\",\r\n    \"comidas\": [\r\n        {            \r\n            \"nombre\": \"Ensalada César\",\r\n            \"precio\": 60.0\r\n        },\r\n        {         \r\n            \"nombre\": \"Salmón a la parrilla\",\r\n            \"precio\": 115.0\r\n        }\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/menu/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerTodosLosMenu",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/menu",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginUsuarioCredencialesIncorrectas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "dni",
+						"value": "1234",
+						"type": "text"
+					},
+					{
+						"key": "clave",
+						"value": "my",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/usuario/Autenticacion",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"usuario",
+						"Autenticacion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CrearComida",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Milanesa\",\r\n    \"precio\":\"100\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/comida",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerComidas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/comida",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizaComidaOK",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Milanesa\",\r\n    \"precio\":\"300\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/comida",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comida"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizaComidaNoExistente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"Pizza Napolitana\",\r\n    \"precio\":\"1000\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/comida",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"comida"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

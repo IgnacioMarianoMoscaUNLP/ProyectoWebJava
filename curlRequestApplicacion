@@ -1,0 +1,47 @@
+#!/bin/bash
+
+# Crear un nuevo usuario
+curl -X POST "http://localhost:8080/usuario" \
+-H "Content-Type: application/json" \
+-d '{
+    "apellido": "García",
+    "dni": 12345678,
+    "nombres": "Juan",
+    "email": "juan.garcia@example.com",
+    "foto": null,
+    "clave": "password123"
+}'
+
+# Actualizar usuario existente
+curl -X PUT "http://localhost:8080/usuario/12345678" \
+-H "Authorization: Bearer 123+123456" \
+-H "Content-Type: application/json" \
+-d '{
+    "apellido": "García",
+    "dni": 12345678,
+    "nombres": "Tomas",
+    "email": "juan.garcia@example.com",
+    "foto": null,
+    "clave": "pass123"
+}'
+
+# Login de usuario con credenciales correctas
+curl -X POST "http://localhost:8080/usuario/Autenticacion" \
+-H "Content-Type: application/json"
+-d '{
+	"dni":12345678,
+	"clave":"password123"	
+}'
+
+# Login de usuario con credenciales incorrectas
+curl -D headers.txt -X POST "http://localhost:8080/usuario/Autenticacion" \
+-H "Content-Type: application/json" \
+-d '{
+	"dni":12345678,
+	"clave":"password123"
+}'
+
+# Obtener usuario por DNI con token
+curl -X GET "http://localhost:8080/usuario/1223" \
+-H "Authorization: Bearer 123+123456"
+
