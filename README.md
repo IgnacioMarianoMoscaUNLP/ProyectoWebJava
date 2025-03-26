@@ -1,1 +1,1 @@
-# ProyectoJavaWebSpringAngular
+# ProyectoJavaWebSpring
